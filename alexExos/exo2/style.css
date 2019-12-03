@@ -1,0 +1,57 @@
+BODY {
+      margin-left: 50px;
+      color: navy;
+      background: white URL(fond_spirale.gif);
+      font-family: Arial, Helvetica, sans-serif
+    }
+
+    A:link {
+      color: red
+    }
+
+    A:active {
+      color: maroon
+    }
+
+    A:visited {
+      color: maroon
+    }
+
+    H1,
+    H2,
+    H3,
+    H4 {
+      text-align: center;
+      font-family: "Comic Sans MS", sans-serif;
+      font-size: large
+    }
+
+    H1 {
+      text-align: center;
+      color: white;
+      background: navy
+    }
+
+    H2,
+    H3,
+    H4 {
+      text-align: left;
+      color: navy;
+      background: white
+    }
+
+    TH {
+      background: silver
+    }
+
+    TH,
+    TD {
+      font-family: Arial, Helvetica, sans-serif
+    }
+
+    PRE,
+    TT {
+      font-family: monospace;
+      color: blue;
+      font-weight: bold
+    }

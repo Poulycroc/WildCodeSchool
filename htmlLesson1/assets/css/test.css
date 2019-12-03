@@ -1,0 +1,8 @@
+ul li {
+  background-color: aqua;
+}
+
+ul li:first-child:nth-last-child(n + 10),
+ul *:first-child:nth-last-child(n + 10) ~ li {
+  background-color: blueviolet;
+}

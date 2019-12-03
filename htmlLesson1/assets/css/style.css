@@ -1,0 +1,105 @@
+nav,
+main,
+footer,
+section {
+	width: 100%;
+	height: auto;
+}
+
+body {
+	padding-top: 60px;
+}
+
+nav {
+	background-color: #333;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+/* focus on any 'li' element from 'ul' */
+nav ul li {
+	display: inline-block;
+	padding: 10px;
+}
+
+
+
+nav ul li.logo {
+	font-weight: bold;
+}
+nav ul li.link {
+	font-weight: 200;
+}
+
+nav ul li:nth-child(2) a {
+	color: red;
+}
+
+/* pseudo element */
+nav ul li:last-child {
+	padding-right: 0;
+}
+nav ul li a, nav ul li i {
+	color: #fff;
+	text-decoration: none;
+}
+
+figure img {
+	display: inline-block;
+	width: 100%;
+}
+
+
+
+.hamburger {
+	width: 100px;
+	height: 100px;
+	background-color: blue;
+	position: relative;
+	margin: auto;
+	}
+
+	.line1 {
+		width: 100px;
+		height: 10px;
+		background-color: black;
+	}
+	.line2 {
+		width: 100px;
+		height: 10px;
+		background-color: red;
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+	}
+	.line3 {
+		width: 100px;
+		height: 10px;
+		background-color: violet;
+		position: absolute;
+		bottom: 0;
+	}
+
+	
+	.hamburger:hover .line1 {
+		transform: rotate(45deg);
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+	}
+
+	.hamburger:hover .line2 {
+		transform: rotate(135deg);
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+	}
+	
+	.hamburger:hover .line3 {
+		opacity: 0;
+	}

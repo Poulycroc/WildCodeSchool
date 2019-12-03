@@ -1,0 +1,60 @@
+nav.main-nav {
+  @include size(100%, 80px);
+  background-color: $w;
+  @include pos(fixed, 0, 0, auto, 0);
+
+  .brand-img {
+    @include size(auto, 60px);
+    float: left;
+    padding-top: 10px;
+    img {
+      display: inline-block;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  .right {
+    float: right;
+
+    ul.links, .call-action {
+      float: left;
+    }
+  
+    ul {
+      &.sous-menu, &.sous-sous-menu {
+        display: none;
+      }
+      &.links {
+        margin-right: 20px;
+        white-space: nowrap;
+        li {
+          list-style: none;
+          display: inline-block;
+          margin-right: 10px;
+          position: relative;
+          &:after {
+            @include pos(absolute, 50%, 0);
+            content: ''; transform: translateY(10px);
+            display: block;
+            background-color: $primary;
+            @include size(0, 3px);
+            transition: width 600ms ease-in-out;
+          }
+          &:hover:after {
+            width: 100%;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+          a {
+            line-height: 80px;
+          }
+        }
+    }
+    }
+    .call-action {
+      padding-top: 24px;
+    }
+  }
+}

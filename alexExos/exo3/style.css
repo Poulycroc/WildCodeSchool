@@ -1,0 +1,15 @@
+.damier {
+  border: 2px solid brown;
+  width: 640px;
+  height: 640px;
+}
+
+.damier .spot {
+  width: 80px;
+  height: 80px;
+  background-color: #fff;
+  float: left;
+}
+.damier .spot:nth-child(even) {
+  background-color: #333;
+}

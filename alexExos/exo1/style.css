@@ -1,0 +1,33 @@
+html, body {
+  height: 100%;
+}
+.circle {
+  border-radius: 50%;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: auto;
+}
+
+.circle._1, .circle.circle._3 {
+  background-color: tomato;
+}
+.circle._2, .circle.circle._4 {
+  background-color:greenyellow;
+}
+
+.circle._1 {
+  width: 400px;
+  height: 400px;
+}
+.circle._2 {
+  width: 300px;
+  height: 300px;
+}
+.circle._3 {
+  width: 200px;
+  height: 200px;
+}
+.circle._4 {
+  width: 100px;
+  height: 100px;
+}

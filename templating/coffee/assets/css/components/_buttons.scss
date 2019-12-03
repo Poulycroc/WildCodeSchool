@@ -1,0 +1,43 @@
+.btn {
+  $el: &;
+
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $w;
+  transition: 200ms ease-in-out;
+  border: 0;
+  display: block;
+  position: relative;
+  cursor: pointer;
+
+  &-primary { 
+    background-color: $primary;
+    &:hover {
+      background-color: $primary-lighter;
+      box-shadow: 0 10px 40px 0 rgba($primary, 0.2) !important;
+    }
+    &:before {
+      transform-origin: center center;
+      opacity: 0; transform: translate(-50%, -50%);
+      content: ''; display: block;
+      border-radius: 20px; @include size(100%);
+      @include pos(absolute, 50%,auto,auto,50%); margin: auto;
+      border: 1px solid $primary;
+    }
+    &:hover:before {
+      animation: btnHover 1000ms ease-in-out infinite;
+    }
+  }
+  &-default { 
+    background-color: $default;
+  }
+}
+
+@keyframes btnHover {
+  0% { opacity: 0;  }
+  50% { opacity: 1; }
+  70% { opacity: 0; }
+  100% { @include size(130%,110%); }
+}
