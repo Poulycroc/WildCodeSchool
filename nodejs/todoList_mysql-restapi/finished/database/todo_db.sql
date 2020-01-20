@@ -1,5 +1,7 @@
 CREATE DATABASE todolist_nodejs_restapi;
 
+USE todolist_nodejs_restapi
+
 CREATE TABLE IF NOT EXISTS `tasks` (
   `id` int(11) NOT NULL,
   `task` varchar(200) NOT NULL,
