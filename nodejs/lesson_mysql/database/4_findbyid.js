@@ -16,7 +16,7 @@ con.connect(function(err) {
 });
 
 const findUserByID = function(userID) {
-  const sql = "SELECT user from users where id = ? ";
+  const sql = "SELECT * FROM users WHERE id = ? ";
   con.query(sql, userID, function(err, response) {
     if (err) console.log({ err })
     console.log({ response })
