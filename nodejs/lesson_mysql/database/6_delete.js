@@ -13,13 +13,14 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("database connected");
 
-  findUserByID(1)
+  deleteUser(1)
 });
 
-const findUserByID = function(userID) {
-  const sql = `SELECT * FROM ${tableName} WHERE id = ? `;
-  con.query(sql, userID, function(err, response) {
-    if (err) console.log({ err })
-    console.log({ response })
+const deleteUser = function(userID) {
+  var sql = `DELETE FROM ${tableName} WHERE id = ? `;
+  con.query(sql, userID, function (err, result) {
+    if (err) throw err;
+    console.log("User deleted");
+    console.log({ result })
   });
 }
