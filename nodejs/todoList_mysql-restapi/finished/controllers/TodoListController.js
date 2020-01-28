@@ -52,4 +52,4 @@ module.exports = {
   show,
   update,
   destroy
-};
+}
