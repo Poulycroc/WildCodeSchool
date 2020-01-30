@@ -11,33 +11,31 @@ const con = mysql.createConnection({
   database: databaseName
 })
 
-router.get("/", (req, res) => {
-  res.send('My blog app');
-});
 router.get("/todos", (req, res) => {
-  res.json({ todos: array });
+  const sql = "SELECT * FROM todos"
+  con.query(sql, function(err, response) {
+    if (err) console.log({ err })
+    console.log(response)
+    res.json(response)
+  });
 });
 router.get("/todos/:id", (req, res) => {
-  const id = req.params.id
-  let result = null
-  for (let i; i < array.length; i++) {
-    if (array[i].id === id) {
-      console.log('rest')
-      result = array[i]
-    }
-  }
-
-  if (result === null) {
-    res.status(404).json({ error: 'post not found' });
-  } else {
-    res.json({ result });
-  }
+  const todoID = req.params.id
+  const sql = 'SELECT * FROM todos WHERE id = ?';
+  con.query(sql, todoID, function(err, response) {
+    if (err) console.log({ err })
+    console.log(response[0])
+    res.json(response[0])
+  });
 });
 router.post('/todos', (req, res) => {
-  const formInputs = req.body;
-  console.log({ formInputs })
-  // save it to db
-  res.send('New trip saved successfully!')
+  const newTodo = req.body;
+  const sql = "INSERT INTO todos SET ?"
+  con.query(sql, newTodo, function(err, response) {
+    if (err) console.log({ err })
+    console.log(response)
+    res.json(response)
+  });
 })
 
 

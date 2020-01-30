@@ -1,4 +1,12 @@
+const mysql = require('mysql');
 const tableName = 'todos'
+
+const con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: 'todolist_mvc__wcs'
+});
 
 con.connect(function(err) {
   if (err) throw err;
