@@ -6,6 +6,13 @@ const all = function(callback) {
   con.query(sql, callback)
 }
 
+const findById = function(id , callback) {
+  const sql = 'SELECT * FROM todos WHERE id = ?';
+  con.query(sql, id , callback)
+}
+
+
 module.exports = {
-  all
+  all,
+  findById
 }

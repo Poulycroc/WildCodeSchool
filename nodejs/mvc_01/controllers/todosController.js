@@ -1,5 +1,6 @@
 const Todo = require('../models/Todo.js');
 
+
 const index = function(req, res) {
   Todo.all((err, result) => {
     if (err) throw err
@@ -8,13 +9,10 @@ const index = function(req, res) {
 }
 
 const show = (req, res) => {
-  const todoID = req.params.id
-  Todo.find(todoID)
-  const sql = 'SELECT * FROM todos WHERE id = ?';
-  con.query(sql, todoID, function(err, response) {
-    if (err) console.log({ err })
-    console.log(response[0])
-    res.json(response[0])
+  const TodoID = req.params.id
+  Todo.findById(TodoID, (err, result) => {
+    if (err) throw err
+    res.json(result[0])
   });
 }
 
