@@ -1,25 +1,28 @@
-const con = require('../database/db.js')
-const tableName = 'todos'
+const Model = require("./Model")
 
-const all = function (callback) {
-  const sql = "SELECT * FROM " + tableName
-  con.query(sql, callback)
-}
+function Todo() {
+  Model.call(this, 'todos');
+  this.state.status = 0
+};
 
-const findById = function (id, callback) {
-  const sql = 'SELECT * FROM todos WHERE id = ?';
-  con.query(sql, id, callback)
-}
+Todo.prototype = Object.create(Model.prototype);
+Todo.prototype.constructor = Model;
 
-const createToDo = function (task, callback) {
-  const sql = "INSERT INTO todos SET ?"
-  con.query(sql, task, callback)
-}
+Todo.prototype.all = function(callback) {
+  const sql = `SELECT * FROM ${this.tableName}`;
+  this.db.query(sql, callback);
+};
 
+Todo.prototype.findById = function(id, callback) {
+  const sql = `SELECT * FROM ${this.tableName} WHERE id = ?`;
+  this.db.query(sql, id, callback);
+};
 
+Todo.prototype.createToDo = function(task, callback) {
+  if (task.name == undefined) throw 'Please provide name';
+  const todo = Object.assign(this.state, task)
+  const sql = `INSERT INTO ${this.tableName} SET ?`;
+  this.db.query(sql, todo, callback);
+};
 
-module.exports = {
-  all,
-  findById,
-  createToDo
-}
+module.exports = Todo

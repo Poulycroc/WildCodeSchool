@@ -1,6 +1,6 @@
-const mysql = require('mysql');
-const tableName = 'todos';
-const env = require('./env')
+const mysql = require("mysql");
+const tableName = "todos";
+const env = require("./env");
 
 const con = mysql.createConnection({
   host: env.DATABASE_HOST,
@@ -9,7 +9,7 @@ const con = mysql.createConnection({
   database: env.DATABASE_NAME
 });
 
-con.connect(function (err) {
+con.connect(function(err) {
   if (err) throw err;
   console.log("database connected");
 
@@ -17,17 +17,19 @@ con.connect(function (err) {
     "id INT AUTO_INCREMENT PRIMARY KEY",
     "name VARCHAR(255) NOT NULL",
     "description TEXT",
-    "status INT"
+    "status INT",
+    "created_at datetime NOT NULL",
+    "updated_at datetime NOT NULL"
   ];
-  createTable(tableName, params)
+  createTable(tableName, params);
 });
 
-const createTable = function (tableName, params) {
-  const joinParams = params.join(", ")
+const createTable = function(tableName, params) {
+  const joinParams = params.join(", ");
   const sql = `CREATE TABLE ${tableName} (${joinParams})`;
-  con.query(sql, function (err, result) {
+  con.query(sql, function(err, result) {
     if (err) throw err;
     console.log(`Table ${tableName} created`);
-    console.log({ result })
+    console.log({ result });
   });
-}
+};
