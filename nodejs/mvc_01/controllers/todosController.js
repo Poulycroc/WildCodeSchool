@@ -1,7 +1,7 @@
 const Todo = require('../models/Todo.js');
 
 
-const index = function(req, res) {
+const index = function (req, res) {
   Todo.all((err, result) => {
     if (err) throw err
     res.json(result)
@@ -17,13 +17,11 @@ const show = (req, res) => {
 }
 
 const create = (req, res) => {
-  const newTodo = req.body;
-  const sql = "INSERT INTO todos SET ?"
-  con.query(sql, newTodo, function(err, response) {
-    if (err) console.log({ err })
-    console.log(response)
+  const newToDo = req.body;
+  Todo.createToDo(newToDo, (err, response) => {
+    if (err) throw err
     res.json(response)
-  });
+  })
 }
 
 module.exports = {

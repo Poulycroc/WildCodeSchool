@@ -1,14 +1,15 @@
 const mysql = require('mysql');
-const tableName = 'todos'
+const tableName = 'todos';
+const env = require('./env')
 
 const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: 'todolist_mvc__wcs'
+  host: env.DATABASE_HOST,
+  user: env.DATABASE_USER,
+  password: env.DATABASE_PASSWORD,
+  database: env.DATABASE_NAME
 });
 
-con.connect(function(err) {
+con.connect(function (err) {
   if (err) throw err;
   console.log("database connected");
 
@@ -21,10 +22,10 @@ con.connect(function(err) {
   createTable(tableName, params)
 });
 
-const createTable = function(tableName, params) {
+const createTable = function (tableName, params) {
   const joinParams = params.join(", ")
   const sql = `CREATE TABLE ${tableName} (${joinParams})`;
-  con.query(sql, function(err, result) {
+  con.query(sql, function (err, result) {
     if (err) throw err;
     console.log(`Table ${tableName} created`);
     console.log({ result })
