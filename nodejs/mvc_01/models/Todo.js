@@ -1,28 +1,37 @@
-const Model = require("./Model")
+// Model important
+// - it's our model's base
+const Model = require("./Model");
 
 function Todo() {
-  Model.call(this, 'todos');
-  this.state.status = 0
-};
+  /**
+   * ici on envoi le context d'environement
+   * 'this'
+   */
+  Model.call(this, {
+    tableName: "todos"
+  });
 
+  /**
+   * ici je complete le state du parent avec des
+   * element propre a class Todo
+   */
+  this.state.status = 0;
+}
+
+/**
+ * construction de l'héritage (délégation)
+ * du parent a notre class Todo
+ */
 Todo.prototype = Object.create(Model.prototype);
 Todo.prototype.constructor = Model;
 
-Todo.prototype.all = function(callback) {
-  const sql = `SELECT * FROM ${this.tableName}`;
-  this.db.query(sql, callback);
+/**
+ * @param {Object} task - the new task
+ * @param {Function} callback
+ */
+Todo.prototype.addTodo = function(task, callback) {
+  if (task.name == undefined) throw "Please provide name";
+  this.insert(task, callback);
 };
 
-Todo.prototype.findById = function(id, callback) {
-  const sql = `SELECT * FROM ${this.tableName} WHERE id = ?`;
-  this.db.query(sql, id, callback);
-};
-
-Todo.prototype.createToDo = function(task, callback) {
-  if (task.name == undefined) throw 'Please provide name';
-  const todo = Object.assign(this.state, task)
-  const sql = `INSERT INTO ${this.tableName} SET ?`;
-  this.db.query(sql, todo, callback);
-};
-
-module.exports = Todo
+module.exports = Todo;

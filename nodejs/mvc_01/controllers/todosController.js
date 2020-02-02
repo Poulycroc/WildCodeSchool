@@ -3,7 +3,7 @@ const Todo = require("../models/Todo.js");
 const index = function(req, res) {
   const todo = new Todo()
   
-  todo.all((err, result) => {
+  todo.getAll((err, result) => {
     if (err) throw err;
     res.json(result);
   });
@@ -23,7 +23,7 @@ const create = (req, res) => {
   const newToDo = req.body;
   const todo = new Todo()
 
-  todo.createToDo(newToDo, (err, todo) => {
+  todo.addTodo(newToDo, (err, todo) => {
     if (err) throw err;
     res.json(todo);
   });
