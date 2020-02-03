@@ -13,6 +13,31 @@ const now = new Date();
 function Model(options) {
   this.db = con;
   this.tableName = options.tableName;
+  this.helpers = {
+    /**
+     * @param {Undefined or Array} col
+     * @return {String}
+     */
+    select: (col) => {
+      let prepar = '*'
+      if (col !== undefined)
+        prepar = col.join(', ')
+      return `
+        SELECT ${prepar} 
+        FROM ${this.tableName}
+      `
+    },
+
+    /**
+     * @return {String}
+     */
+    insert: () => {
+      return `
+        INSERT INTO ${this.tableName} 
+        SET ?
+      `
+    }
+  };
   this.state = {
     created_at: now,
     updated_at: now
@@ -23,10 +48,7 @@ function Model(options) {
  * @param {Function} callback
  */
 Model.prototype.getAll = function(callback) {
-  const sql = `
-    SELECT * 
-    FROM ${this.tableName}
-  `;
+  const sql = this.helpers.select();
   this.db.query(sql, callback);
 };
 
@@ -36,8 +58,7 @@ Model.prototype.getAll = function(callback) {
  */
 Model.prototype.findById = function(id, callback) {
   const sql = `
-    SELECT * 
-    FROM ${this.tableName} 
+    ${this.helpers.select()} 
     WHERE id = ?
   `;
   this.db.query(sql, id, callback);
@@ -49,10 +70,7 @@ Model.prototype.findById = function(id, callback) {
  */
 Model.prototype.insert = function(data, callback) {
   const mergedData = Object.assign(this.state, data);
-  const sql = `
-    INSERT INTO ${this.tableName} 
-    SET ?
-  `;
+  const sql = this.helpers.insert();
   this.db.query(sql, mergedData, callback);
 };
 
@@ -63,8 +81,7 @@ Model.prototype.insert = function(data, callback) {
 Model.prototype.update = function(id, data, callback) {
   data.updated_at = this.state.updated_at;
   const sql = `
-    INSERT INTO ${this.tableName} 
-    SET ? 
+    ${this.helpers.insert()} 
     WHERE id = ?
   `;
   const arr = [data, id];
