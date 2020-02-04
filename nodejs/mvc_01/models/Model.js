@@ -18,8 +18,7 @@ Model.prototype.all = function(callback) {
 Model.prototype.insert = function (data, callback) {
   const sql = `INSERT INTO ${this.tableName} SET ?`
   const mergedData = Object.assign(this.state, data)
-  console.log({ mergedData })
-  // this.db.query(sql, mergedData, callback)
+  this.db.query(sql, mergedData, callback)
 } 
 
 module.exports = Model;
