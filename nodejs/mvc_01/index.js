@@ -8,7 +8,8 @@ const todosController = require('./controllers/todosController.js')
 router.get('/todos', todosController.index)
 router.get("/todos/:id", todosController.show)
 router.post('/todos', todosController.create)
-
+router.delete("/todos", todosController.erase)
+router.update("/todos/:id", todosController.update)
 
 app.use(express.json());
 app.use(express.urlencoded());
