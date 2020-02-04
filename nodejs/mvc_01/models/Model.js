@@ -21,4 +21,22 @@ Model.prototype.insert = function (data, callback) {
   this.db.query(sql, mergedData, callback)
 } 
 
+Model.prototype.findById = function(id, callback){
+  const sql = `SELECT * FROM ${this.tableName} WHERE id = ?`;
+  this.db.query(sql, id, callback)
+}
+
+Model.prototype.update = function(id, data, callback){
+  data.updated_at = this.state.updated_at
+  const sql = `UPDATE ${this.tableName} SET ? WHERE id = ?`
+  const array = [data, id]
+  this.db.query(sql, array, callback)
+}
+
+Model.prototype.delete = function(id, callback){
+  const sql = `DELETE FROM ${this.tableName} WHERE id = ?`
+  this.db.query(sql, id, callback)
+}
+
+
 module.exports = Model;
