@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const tableName = 'todos';
+const tableName = 'users';
 const env = require('./env')
 
 const con = mysql.createConnection({
@@ -16,11 +16,9 @@ con.connect(function (err) {
 
   const params = [
     "id INT AUTO_INCREMENT PRIMARY KEY",
-    "name VARCHAR(255) NOT NULL",
-    "description TEXT",
-    "status INT",
-    "created_at DATETIME NOT NULL",
-    "updated_at DATETIME NOT NULL"
+    "firstname VARCHAR(255) NOT NULL",
+    "lastname VARCHAR(255) NOT NULL",
+    "email VARCHAR(255) NOT NULL"
   ];
   createTable(tableName, params)
 });
