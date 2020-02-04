@@ -6,7 +6,8 @@ const con = mysql.createConnection({
   host: env.DATABASE_HOST,
   user: env.DATABASE_USER,
   password: env.DATABASE_PASSWORD,
-  database: env.DATABASE_NAME
+  database: env.DATABASE_NAME,
+  port: env.DATABASE_PORT
 });
 
 con.connect(function (err) {
@@ -17,7 +18,9 @@ con.connect(function (err) {
     "id INT AUTO_INCREMENT PRIMARY KEY",
     "name VARCHAR(255) NOT NULL",
     "description TEXT",
-    "status INT"
+    "status INT",
+    "created_at DATETIME NOT NULL",
+    "updated_at DATETIME NOT NULL"
   ];
   createTable(tableName, params)
 });

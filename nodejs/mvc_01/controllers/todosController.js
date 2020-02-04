@@ -24,8 +24,28 @@ const create = (req, res) => {
   })
 }
 
+const update = (req, res) => {
+  const updateTodo = req.body;
+  const TodoID = req.params.id; 
+  Todo.updateTodo(TodoID, updateTodo, (err, response) => {
+    if (err) throw err
+    res.json(response)
+  })
+}
+
+const erase = (req, res) => {
+  const newToDelete = req.params.id;
+  Todo.deleteToDo(newToDelete, (err, response) => {
+    if (err) throw err
+    res.json(response)
+  })
+}
+
+
 module.exports = {
   index,
   show,
-  create
+  create,
+  erase,
+  update
 }
