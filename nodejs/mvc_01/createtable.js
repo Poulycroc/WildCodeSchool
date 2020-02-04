@@ -18,7 +18,9 @@ con.connect(function (err) {
     "id INT AUTO_INCREMENT PRIMARY KEY",
     "firstname VARCHAR(255) NOT NULL",
     "lastname VARCHAR(255) NOT NULL",
-    "email VARCHAR(255) NOT NULL"
+    "email VARCHAR(255) NOT NULL",
+    "created_at DATE NOT NULL",
+    "updated_at DATE NOT NULL",
   ];
   createTable(tableName, params)
 });
