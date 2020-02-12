@@ -10,7 +10,7 @@ function User() {
 User.prototype = Object.create(Model.prototype)
 User.prototype.constructor = Model
 
-User.prototype.createUser = function (data, callback) {
+User.prototype.insert = function (data, callback) {
   if (data.firstname === undefined) {
     return console.log('pas de nom')
   }
