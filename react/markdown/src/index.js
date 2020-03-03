@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import { render } from "react-dom";
-import marked from 'marked'
+import marked from "marked";
 
 // Style
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,24 +9,24 @@ import "./style.css";
 // Custom Codes
 import sampleText from "./sampleText";
 
-class App extends React.Component {
+class App extends Component {
   state = {
     text: sampleText
   };
 
-  setText = val => {
-    const { value } = val.target;
+  setText = ({ target }) => {
+    const { value } = target;
     this.setState({ text: value });
   };
 
-  convertText = text => {
+  convertText = ({ text }) => {
     const converted = marked(text, {
       sanitize: true
-    })
+    });
     return {
       __html: converted
-    }
-  }
+    };
+  };
 
   render() {
     return (
@@ -51,7 +51,7 @@ class App extends React.Component {
             </div>
             <div
               className="col-sm-6"
-              dangerouslySetInnerHTML={this.convertText(this.state.text)}
+              dangerouslySetInnerHTML={this.convertText(this.state)}
             />
           </div>
         </main>
