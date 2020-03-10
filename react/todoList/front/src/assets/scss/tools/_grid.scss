@@ -1,0 +1,13 @@
+.container, .row {
+  @include size(f,auto);
+  @include clearfix;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  @include max-screen(1200px) {
+    padding-left: 8pt;
+    padding-right: 8pt;
+  }
+}

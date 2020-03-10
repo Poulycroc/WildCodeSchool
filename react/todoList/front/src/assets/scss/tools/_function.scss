@@ -1,0 +1,14 @@
+@function color($color-name, $color-variant: null) {
+  @if ($color-variant != null) {
+    @return map-get(map-get($colors, $color-name), $color-variant);
+  } @else {
+    @return map-get($colors, $color-name);
+  }
+}
+@function z($key) {
+  @if map-has-key($z-layers, $key) {
+    @return map-get($z-layers, $key);
+  }
+  @warn "Unknown `#{$key}` in $z-layers.";
+  @return null;
+}
