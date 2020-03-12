@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { Component } from "react";
 import TodosContainer from './components/TodosContainer';
 import TodoAdd from './components/TodoAdd'
 
-function App() {
-  const handleInputValue = (event) => {
-    console.log({handleInputValue: event})
+class App extends Component {
+  state = {
+    count: 0
+  };
+
+  handleInputValue = () => {
+    console.log(this.state.count)
+    this.setState({count: this.state.count + 1}) 
   }
 
-  return (
-    <div className="app-viewport">
-      <div className="container">
-        <TodoAdd handleInputValue={handleInputValue}/>
-        <TodosContainer />
+  render() {
+    return (
+      <div className="app-viewport">
+        <div className="container">
+          <TodoAdd handleInputValueProps={this.handleInputValue} />
+          <TodosContainer key={this.state.count}/>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  
+
+  
 }
 
 export default App;

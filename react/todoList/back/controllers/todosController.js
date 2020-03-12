@@ -13,7 +13,19 @@ const create = (req, res) => {
     .catch(e => res.status(500).send(e));
 };
 
+const destroy = (req, res) => {
+  const { id } = req.params;
+  return Todo.destroy({
+    where: {
+      id
+    }
+  })
+    .then(() => res.status(200).send('id delete'))
+    .catch(e => res.status(500).send(e));
+};
+
 module.exports = {
   index,
-  create
+  create,
+  destroy
 };
