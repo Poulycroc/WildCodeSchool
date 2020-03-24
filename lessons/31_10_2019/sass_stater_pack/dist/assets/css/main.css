@@ -1,0 +1,73 @@
+/*
+  (TEXT) PARAMS
+  =================
+  1. Namespace
+  2. Intensity
+  3. Text color
+  4. Background color (flat)
+  5. Highlight #1 color
+  6. Highlight #2 color
+  7. Width (px)
+  8. Height (px)
+*/
+/*
+  $type String, 'color', 'height'...
+*/
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box; }
+
+/*
+ * Your colors here
+ */
+/*
+ * CSS base classes 
+ */
+._trs {
+  transition: all ease-in-out 300ms; }
+
+.pull_right {
+  float: right; }
+
+.push_b_20 {
+  margin-bottom: 20px; }
+
+.push_b_40 {
+  margin-bottom: 40px; }
+
+.push_t_20 {
+  margin-top: 20px; }
+
+.push_t_40 {
+  margin-top: 40px; }
+
+.container {
+  width: 100%;
+  height: auto;
+  clear: both;
+  zoom: 1;
+  max-width: 1200px;
+  margin: 0 auto; }
+  .container:before, .container:after {
+    content: " ";
+    display: table; }
+  .container:after {
+    clear: both;
+    line-height: 0;
+    visibility: hidden; }
+  @media only screen and (max-width: 1200px) {
+    .container {
+      padding-left: 8pt;
+      padding-right: 8pt; } }
+
+.button {
+  width: auto;
+  height: 40px;
+  line-height: 2.5rem;
+  line-height: 40px; }
+
+html, body {
+  height: 100%; }

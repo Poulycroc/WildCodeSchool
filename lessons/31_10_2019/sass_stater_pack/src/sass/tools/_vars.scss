@@ -1,0 +1,24 @@
+$z-layers: (
+  nav: 10000,
+  header: 10,
+  overlay: 5000,
+  aside: 4500,
+  modal: 6000
+);
+
+$baseHeight: 57px;
+$typoHeight: 17px;
+$bezier: cubic-bezier(0.81, 0.4, 0.57, 1.63);
+$navSize: 60;
+$ms: 200ms;
+$liHover: 0.05;
+$borderRadius: 4px;
+$borderColor: color(border);
+$border: 1px solid $borderColor;
+$smallHeight: 40px;
+
+@mixin mobile {
+  @include max-screen(450px) {
+    @content;
+  }
+}

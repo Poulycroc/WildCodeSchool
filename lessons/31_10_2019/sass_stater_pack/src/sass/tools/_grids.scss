@@ -1,0 +1,11 @@
+.container {
+  @include size(f,auto);
+  @include clearfix;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  @include max-screen(1200px) {
+    padding-left: 8pt;
+    padding-right: 8pt;
+  }
+}

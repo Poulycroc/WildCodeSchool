@@ -1,0 +1,31 @@
+/*
+ * CSS base classes 
+ */
+._trs {
+  transition: all ease-in-out 300ms;
+}
+
+.pull_ {
+  &right {
+    float: right;
+  }
+}
+
+.push_ {
+  &b_ {
+    &20 {
+      margin-bottom: 20px;
+    }
+    &40 {
+      margin-bottom: 40px;
+    }
+  }
+  &t_ {
+    &20 {
+      margin-top: 20px;
+    }
+    &40 {
+      margin-top: 40px;
+    }
+  }
+}

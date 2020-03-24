@@ -1,0 +1,4 @@
+.button {
+  @include size(auto, 40px);
+  @include lH(40);
+}
