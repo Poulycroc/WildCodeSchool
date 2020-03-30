@@ -9,6 +9,7 @@ import "./style.css";
 // Custom Codes
 import sampleText from "./sampleText";
 
+//comments test
 class App extends Component {
   state = {
     text: sampleText
